@@ -1,4 +1,9 @@
-;; .emacs
+;;; .emacs --- Config file for emacs
+
+;;; Commentary:
+; Emacs config file
+
+;;; Code:
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -40,3 +45,15 @@
 
 (setq linum-format "%4d \u2502 ")
 (global-linum-mode 1)
+
+; multiple cursor keybindings:
+; cursors for highlighted lines
+
+(global-set-key (kbd "C-c c") 'mc/edit-lines)
+
+; bind arrow keys to skip words when holding control
+(global-set-key (kbd "C-<left>") 'backward-word)
+(global-set-key (kbd "C-<right>") 'forward-word)
+
+(provide '.emacs)
+;;; .emacs ends here
