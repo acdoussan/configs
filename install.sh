@@ -6,11 +6,11 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 # powerlevel9k https://github.com/bhilburn/powerlevel9k
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-# powerline fonts https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+# powerline fonts
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 mkdir -p ~/.local/share/fonts/
-mv PowerlineSymbols.otf ~/.local/share/fonts/
+mv "Hack Regular Nerd Font Complete.ttf" ~/.local/share/fonts/
 fc-cache -vf ~/.local/share/fonts/
 mkdir -p ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
