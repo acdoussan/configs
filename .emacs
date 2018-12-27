@@ -13,6 +13,10 @@
                             (setq c-basic-offset 2
                                   indent-tabs-mode nil)))
 
+(setq js-indent-level 2)
+
+(when (fboundp 'electric-indent-mode) (electric-indent-mode -1))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
