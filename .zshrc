@@ -1,6 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# UTF-8 language settings
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 ENABLE_CORRECTION="true"
@@ -17,6 +22,9 @@ plugins=(
   git
 )
 
+# solarized terminal settings
+source ~/sol.dark
+
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -27,7 +35,7 @@ else
 fi
 
 alias e='emacs -nw'
-alias tmux='tmux -2'
+alias tmux='tmux -2 -u'
 
 # apply solarize ls colors
 eval `dircolors ~/.dircolors`
