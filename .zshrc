@@ -35,3 +35,8 @@ eval `dircolors ~/.dircolors`
 # keybindings
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
+
+# fix for dircolors not working on autocomplete
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
