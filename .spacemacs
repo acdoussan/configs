@@ -2,6 +2,8 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(defvar adam-tab-width 2)
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -31,32 +33,20 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
-     ;; auto-completion
-     ;; better-defaults
+     ansible
      emacs-lisp
-     ;; git
-     ;; markdown
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     ;; version-control
+     helm
+     java
+     javascript
+     markdown
+     (python :variables python-indent-offset adam-tab-width)
      react
-     python
+     spell-checking
+     sql
+     syntax-checking
+     theming
      typescript
      yaml
-     sql
-     java
-     theming
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -134,7 +124,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state nil
@@ -321,54 +312,45 @@ you should place your code here."
   (setq theming-modifications
         '((solarized
            ;; Provide a on-off modeline
-           ;;(mode-line :foreground "#e4e4e4" :background "#0087ff" :inverse-video nil)
-           ;;(powerline-active1 :foreground "#e4e4e4" :background "#5f5faf" :inverse-video nil)
-           ;;(powerline-active2 :foreground "#e4e4e4" :background "#0087ff" :inverse-video nil)
            (mode-line :foreground "white" :background "blue" :inverse-video nil)
            (powerline-active1 :foreground "white" :background "yellow" :inverse-video nil)
            (powerline-active2 :foreground "white" :background "blue" :inverse-video nil)
            (mode-line-inactive :foreground "white" :background "black" :inverse-video nil)
            (powerline-inactive1 :foreground "white" :background "black" :inverse-video nil)
            (powerline-inactive2 :foreground "white" :background "black" :inverse-video nil)
-           ;;(mode-line-inactive :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
-           ;;(powerline-inactive1 :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
-           ;;(powerline-inactive2 :foreground "#2075c7" :background "#e9e2cb" :inverse-video nil)
            ;; Make a really prominent helm selection line.
            (helm-selection :foreground "white" :background "red" :inverse-video nil)
            )))
 
-  ;; custom solarized theme
-  (set-terminal-parameter nil 'background-mode 'dark)
-  (set-frame-parameter nil 'background-mode 'dark)
-  (spacemacs/load-theme 'solarized)
-
-  ;; use react mode for javascript files too
-  (push '("\\.js\\'" . react-mode) auto-mode-alist)
-
   ;; indentation settings
-  (let* ((adam-tab-width 2)
-         (adam-js-tab-width adam-tab-width)
+  (let* ((adam-js-tab-width adam-tab-width)
          (adam-web-tab-width adam-tab-width))
     (setq-default
        indent-tabs-mode nil
        standard-indent adam-tab-width
        tab-width adam-tab-width
+       c-default-style "bsd"
        c-basic-offset adam-tab-width
        ;; js/html/css indentation
-       js2-basic-offset adam-js-tab-width
+       js-indent-level adam-js-tab-width
+       js2-basic-offset adam-js-tab-width)
+    (with-eval-after-load 'web-mode
+      (setq
        css-indent-offset adam-web-tab-width
        web-mode-markup-indent-offset adam-web-tab-width
        web-mode-css-indent-offset adam-web-tab-width
        web-mode-code-indent-offset adam-js-tab-width
        web-mode-attr-indent-offset adam-web-tab-width)
-      (with-eval-after-load 'web-mode
-        (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-        (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-        (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
-        )
+
+      (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
       )
-  (setq linum-format "%3s| ")
-  (setq linum-relative-format "%3s| ")
+    )
+
+  (setq linum-format "%4s| ")
+  (setq linum-relative-format "%4s| ")
+
+  (setq powerline-default-separator "utf-8")
+  (spaceline-compile)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -380,7 +362,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify yaml-mode web-mode web-beautify tide typescript-mode tagedit sql-indent slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode dash-functional helm-pydoc helm-css-scss haml-mode flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck emmet-mode eclim yasnippet cython-mode coffee-mode auto-dictionary anaconda-mode pythonic tern color-theme-solarized color-theme zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (jinja2-mode ansible-doc ansible yapfify yaml-mode web-mode web-beautify tide typescript-mode tagedit sql-indent slim-mode scss-mode sass-mode pyvenv pytest pyenv-mode py-isort pug-mode pip-requirements livid-mode skewer-mode simple-httpd live-py-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc hy-mode dash-functional helm-pydoc helm-css-scss haml-mode flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck emmet-mode eclim yasnippet cython-mode coffee-mode auto-dictionary anaconda-mode pythonic tern color-theme-solarized color-theme zenburn-theme zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme exotica-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -27,8 +27,12 @@ then
     mv emacs-color-theme-solarized ~/.config/emacs/themes/
 fi
 
+# install spacemacs
+git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+$(cd ~/.emacs.d && git checkout 56ae091b62af9b9d2da1d429700cc9fbce6b1720)
+
 # zsh, tmux, and emacs configs
-cp .emacs ~/.emacs
+cp .spacemacs ~/.spacemacs
 cp .zshrc ~/.zshrc
 cp .tmux.conf ~/.tmux.conf
 
