@@ -32,11 +32,13 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(octave
      ansible
      emacs-lisp
      helm
-     java
+     lsp
+     dap
+     (java :variables java-backend 'lsp)
      javascript
      markdown
      (python :variables python-indent-offset adam-tab-width)
@@ -299,6 +301,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (add-hook 'python-mode-hook (lambda ()
+                                (flycheck-mode 1)
+                                (anaconda-mode 0)
+                                (setq flycheck-checker 'python-pylint
+                                      flycheck-python-pycompile-executable "python3"
+                                      flycheck-python-pylint-executable "python3")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -308,6 +316,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  (xterm-mouse-mode 0)
+  (setq-default frame-background-mode 'dark)
+
+  (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs-backups"))))
 
   (setq theming-modifications
         '((solarized
@@ -324,7 +337,8 @@ you should place your code here."
 
   ;; indentation settings
   (let* ((adam-js-tab-width adam-tab-width)
-         (adam-web-tab-width adam-tab-width))
+         (adam-web-tab-width adam-tab-width)
+         (adam-ts-tab-width adam-tab-width))
     (setq-default
        indent-tabs-mode nil
        standard-indent adam-tab-width
@@ -332,8 +346,11 @@ you should place your code here."
        c-default-style "bsd"
        c-basic-offset adam-tab-width
        ;; js/html/css indentation
+       sgml-basic-offset adam-web-tab-width
        js-indent-level adam-js-tab-width
-       js2-basic-offset adam-js-tab-width)
+       js2-basic-offset adam-js-tab-width
+       ;; typescript indent level
+       typescript-indent-level adam-ts-tab-width)
     (with-eval-after-load 'web-mode
       (setq
        css-indent-offset adam-web-tab-width
