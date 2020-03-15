@@ -56,6 +56,7 @@
 ;; remove annoying packages
 (unload-feature 'aggressive-indent)
 (unload-feature 'hungry-delete)
+(unload-feature 'drag-stuff)
 
 ;; rjsx mode for js files
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
