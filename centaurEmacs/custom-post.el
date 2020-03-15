@@ -75,3 +75,7 @@
 (setq whitespace-line-column 100)
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; bind ace window to easier key
+(global-set-key (kbd "M-o") 'ace-window)
+(add-hook 'term-mode-hook (lambda() (define-key term-raw-map (kbd "M-o") 'ace-window)))
