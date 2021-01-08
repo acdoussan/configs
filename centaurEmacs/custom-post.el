@@ -114,3 +114,6 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line] 'smarter-move-beginning-of-line)
 
 (setq exec-path (append '("~/.nvm/versions/node/v12.13.1/bin") exec-path))
+
+(setq lsp-java-format-enabled nil)
+(add-to-list 'centaur-lsp-format-on-save-ignore-modes 'typescript-mode)
