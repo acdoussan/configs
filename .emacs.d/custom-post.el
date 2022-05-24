@@ -117,3 +117,6 @@ point reaches the beginning or end of the buffer, stop there."
 
 (setq lsp-java-format-enabled nil)
 (add-to-list 'centaur-lsp-format-on-save-ignore-modes 'typescript-mode)
+
+(when (eq system-type 'darwin))
+  (setq insert-diectory-program "/opt/homebrew/bin/gls")
