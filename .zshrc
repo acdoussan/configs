@@ -18,6 +18,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
 plugins=(
   git
+  nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -31,10 +32,6 @@ fi
 
 alias e='emacs -nw'
 alias tmux='tmux -2'
-
-# alias ls='gls --color=auto' #install gnu ls on mac and uncomment
-# apply solarize ls colors
-eval `dircolors ~/.dircolors` #gdircolors on mac
 
 # keybindings
 bindkey "^[[5~" history-beginning-search-backward
