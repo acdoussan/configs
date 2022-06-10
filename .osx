@@ -86,6 +86,9 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Disable mouse acceleration
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
