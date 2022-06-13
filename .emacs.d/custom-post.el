@@ -48,12 +48,13 @@
   )
 
 ;; install packages
-(dolist (package '(rjsx-mode json-mode solarized-theme eterm-256color))
+(dolist (package '(rjsx-mode json-mode solarized-theme eterm-256color tree-sitter tree-sitter-langs))
   (unless (package-installed-p package)
     (package-install package))
   (require package))
 
 ;; remove annoying packages
+(cancel-function-timers 'aggressive-indent--indent-if-changed)
 (unload-feature 'aggressive-indent)
 (unload-feature 'hungry-delete)
 (unload-feature 'drag-stuff)
@@ -61,11 +62,9 @@
 (unload-feature 'diff-hl)
 
 ;; rjsx mode for js files
+(setq auto-mode-alist (delete '("\\.jsx\\'" . js2-jsx-mode) auto-mode-alist))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-
-;; the following doesn't work
-;;(add-hook 'rjsx-mode-hook (lambda() (setq-local prettify-symbols-alist '((">=" . 8805)
-;;                                                                    ("<=" . 8804)))))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
 ;; solarized theme
 (load-theme 'solarized-dark t)
@@ -117,6 +116,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 (setq lsp-java-format-enabled nil)
 (add-to-list 'centaur-lsp-format-on-save-ignore-modes 'typescript-mode)
+
+;; temp TSX config https://github.com/emacs-typescript/typescript.el/issues/4
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 (when (eq system-type 'darwin))
   (setq insert-diectory-program "/opt/homebrew/bin/gls")
