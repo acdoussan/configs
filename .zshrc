@@ -25,9 +25,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs -nw'
+  export EDITOR='vi'
 else
-  export EDITOR='emacs -nw'
+  export EDITOR='vi'
 fi
 
 alias e='emacs -nw'
