@@ -19,6 +19,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 plugins=(
   git
   nvm
+  rbenv
 )
 
 source $ZSH/oh-my-zsh.sh
