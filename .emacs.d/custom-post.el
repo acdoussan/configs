@@ -19,32 +19,31 @@
 
 ;; indentation settings
 (defvar adam-tab-width 2)
+(defvar adam-js-tab-width adam-tab-width)
+(defvar adam-web-tab-width adam-tab-width)
+(defvar adam-ts-tab-width adam-tab-width)
 
-(let* ((adam-js-tab-width adam-tab-width)
-       (adam-web-tab-width adam-tab-width)
-       (adam-ts-tab-width adam-tab-width))
-  (setq-default
-   indent-tabs-mode nil
-   standard-indent adam-tab-width
-   tab-width adam-tab-width
-   c-default-style "bsd"
-   c-basic-offset adam-tab-width
-   ;; js/html/css indentation
-   sgml-basic-offset adam-web-tab-width
-   js-indent-level adam-js-tab-width
-   js2-basic-offset adam-js-tab-width
-   ;; typescript indent level
-   typescript-indent-level adam-ts-tab-width)
-  (with-eval-after-load 'web-mode
-    (setq
-     css-indent-offset adam-web-tab-width
-     web-mode-markup-indent-offset adam-web-tab-width
-     web-mode-css-indent-offset adam-web-tab-width
-     web-mode-code-indent-offset adam-js-tab-width
-     web-mode-attr-indent-offset adam-web-tab-width)
+(setq-default
+ indent-tabs-mode nil
+ standard-indent adam-tab-width
+ tab-width adam-tab-width
+ c-default-style "bsd"
+ c-basic-offset adam-tab-width
+ ;; js/html/css indentation
+ sgml-basic-offset adam-web-tab-width
+ js-indent-level adam-js-tab-width
+ js2-basic-offset adam-js-tab-width
+ ;; typescript indent level
+ typescript-indent-level adam-ts-tab-width)
+(with-eval-after-load 'web-mode
+  (setq
+   css-indent-offset adam-web-tab-width
+   web-mode-markup-indent-offset adam-web-tab-width
+   web-mode-css-indent-offset adam-web-tab-width
+   web-mode-code-indent-offset adam-js-tab-width
+   web-mode-attr-indent-offset adam-web-tab-width)
 
-    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-    )
+  (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
   )
 
 ;; install packages
