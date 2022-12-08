@@ -111,9 +111,6 @@ point reaches the beginning or end of the buffer, stop there."
 
 (setq exec-path (append '("~/.nvm/versions/node/v12.13.1/bin") exec-path))
 
-(setq lsp-java-format-enabled nil)
-(add-to-list 'centaur-lsp-format-on-save-ignore-modes 'typescript-mode)
-
 ;; temp TSX config https://github.com/emacs-typescript/typescript.el/issues/4
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
