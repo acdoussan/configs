@@ -57,8 +57,6 @@
 (unload-feature 'aggressive-indent)
 (unload-feature 'hungry-delete)
 (unload-feature 'drag-stuff)
-(unload-feature 'diff-hl-flydiff)
-(unload-feature 'diff-hl)
 
 ;; rjsx mode for js files
 (setq auto-mode-alist (delete '("\\.jsx\\'" . js2-jsx-mode) auto-mode-alist))
