@@ -116,3 +116,6 @@ point reaches the beginning or end of the buffer, stop there."
 
 (when (eq system-type 'darwin))
   (setq insert-diectory-program "/opt/homebrew/bin/gls")
+
+;; disable the text that is dynamically inserted on the right by lsp
+(setq lsp-ui-sideline-enable nil)
