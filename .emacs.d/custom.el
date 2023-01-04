@@ -5,26 +5,25 @@
 ;;; Code:
 
 ;; (setq centaur-logo nil)                        ; Logo file or nil (official logo)
-;; (setq centaur-full-name "user name")           ; User full name
+(setq centaur-full-name "Adam Doussan")           ; User full name
 ;; (setq centaur-mail-address "user@email.com")   ; Email address
-;; (setq centaur-proxy "127.0.0.1:1080")          ; Network proxy
-;; (setq centaur-server nil)                      ; Enable `server-mode' or not: t or nil
-;; (setq centaur-icon nil)                        ; Display icons or not: t or nil
-(setq centaur-package-archives 'melpa)   ; Package repo: melpa, melpa-mirror, emacs-china, netease, ustc, tencent or tuna
-;; (setq centaur-theme 'light)                    ; Color theme: auto, random, default, classic, colorful, dark, light, day or night
-;; (setq centaur-dashboard nil)                   ; Use dashboard at startup or not: t or nil
-;; (setq centaur-lsp 'eglot)                      ; Set LSP client: lsp-mode, eglot or nil
-(setq centaur-lsp-format-disable-on-save t)    ; disable the on save formatting for all files
-;; (setq centaur-lsp-format-on-save-ignore-modes '(c-mode c++-mode)) ; Ignore format on save for some languages
-;; (setq centaur-chinese-calendar t)              ; Use Chinese calendar or not: t or nil
-;; (setq centaur-prettify-symbols-alist nil)      ; Alist of symbol prettifications
+;; (setq centaur-proxy "127.0.0.1:1087")          ; HTTP/HTTPS proxy
+;; (setq centaur-socks-proxy "127.0.0.1:1086")    ; SOCKS proxy
+;; (setq centaur-server t)                        ; Enable `server-mode' or not: t or nil
+;; (setq centaur-icon t)                          ; Display icons or not: t or nil
+(setq centaur-package-archives 'melpa)         ; Package repo: melpa, emacs-cn, bfsu, netease, sjtu, tencent, tuna or ustc
+;; (setq centaur-theme 'auto)                     ; Color theme: auto, random, system, default, pro, dark, light, warm, cold, day or night
+;; (setq centaur-completion-style 'minibuffer)    ; Completion display style: minibuffer or childframe
+;; (setq centaur-dashboard nil)                   ; Display dashboard at startup or not: t or nil
+(setq centaur-restore-frame-geometry t)      ; Restore the frame's geometry at startup: t or nil
+;; (setq centaur-lsp 'nil)                      ; Set LSP client: lsp-mode, eglot or nil
+(setq centaur-lsp-format-on-save nil)            ; Auto format buffers on save: t or nil
+;; (setq centaur-lsp-format-on-save-ignore-modes '(c-mode c++-mode python-mode markdown-mode)) ; Ignore format on save for some languages
+;; (setq centaur-tree-sitter t)                 ; Enable tree-sitter or not: t or nil
+(setq centaur-chinese-calendar nil)            ; Support Chinese calendar or not: t or nil
+(setq centaur-player nil)                        ; Enable players or not: t or nil
+;; (setq centaur-prettify-symbols-alist nil)      ; Alist of symbol prettifications. Nil to use font supports ligatures.
 ;; (setq centaur-prettify-org-symbols-alist nil)  ; Alist of symbol prettifications for `org-mode'
-;; (setq centaur-benchmark-init t)                ; Enable initialization benchmark or not: t or nil
-
-;; For Emacs devel
-;; (setq package-user-dir (locate-user-emacs-file (format "elpa-%s" emacs-major-version)))
-;; (setq desktop-base-file-name (format ".emacs-%s.desktop" emacs-major-version))
-;; (setq desktop-base-lock-name (format ".emacs-%s.desktop.lock" emacs-major-version))
 
 ;; Fonts
 (when (display-graphic-p)
