@@ -47,7 +47,7 @@
   )
 
 ;; install packages
-(dolist (package '(rjsx-mode json-mode solarized-theme eterm-256color tree-sitter tree-sitter-langs))
+(dolist (package '(solarized-theme eterm-256color)) ;; rjsx-mode json-mode tree-sitter tree-sitter-langs))
   (unless (package-installed-p package)
     (package-install package))
   (require package))
@@ -59,9 +59,9 @@
 (unload-feature 'drag-stuff)
 
 ;; rjsx mode for js files
-(setq auto-mode-alist (delete '("\\.jsx\\'" . js2-jsx-mode) auto-mode-alist))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+;;(setq auto-mode-alist (delete '("\\.jsx\\'" . js2-jsx-mode) auto-mode-alist))
+;;(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+;;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
 ;; solarized theme
 (load-theme 'solarized-dark t)
@@ -112,7 +112,7 @@ point reaches the beginning or end of the buffer, stop there."
 (setq exec-path (append '("~/.nvm/versions/node/v12.13.1/bin") exec-path))
 
 ;; temp TSX config https://github.com/emacs-typescript/typescript.el/issues/4
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 (when (eq system-type 'darwin))
   (setq insert-diectory-program "/opt/homebrew/bin/gls")
