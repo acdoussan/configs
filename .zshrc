@@ -1,6 +1,3 @@
-export USER_LOCAL=~/.local
-export PATH=$USER_LOCAL/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
