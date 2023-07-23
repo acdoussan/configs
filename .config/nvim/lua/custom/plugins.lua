@@ -40,6 +40,7 @@ local plugins = {
       config = function()
          require 'custom.configs.telescope'
       end,
+      lazy = false,
    },
    {
       'mbbill/undotree',
