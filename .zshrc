@@ -28,9 +28,6 @@ else
   export EDITOR='vi'
 fi
 
-alias e='emacs -nw'
-alias tmux='tmux -2'
-
 # keybindings
 bindkey "^[[5~" history-beginning-search-backward
 bindkey "^[[6~" history-beginning-search-forward
