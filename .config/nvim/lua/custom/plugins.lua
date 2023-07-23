@@ -22,7 +22,8 @@ local plugins = {
       },
       config = function()
          require 'custom.configs.lsp'
-      end
+      end,
+      lazy = false,
    },
    {
       'nvim-treesitter/nvim-treesitter',
