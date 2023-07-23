@@ -46,6 +46,7 @@ local plugins = {
       config = function()
          require 'custom.configs.undotree'
       end,
+      lazy = false,
    },
 }
 
