@@ -56,6 +56,9 @@ local plugins = {
           "vim",
           "vimdoc",
         },
+        indent = {
+          enable = true
+        }
       },
    },
    {

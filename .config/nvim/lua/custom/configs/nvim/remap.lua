@@ -40,3 +40,7 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- rebind tab to 'smart' indent
+vim.keymap.set('i', '<Tab>', '<C-o>==')
+vim.keymap.set('v', '<Tab>', '=')
