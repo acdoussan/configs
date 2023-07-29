@@ -1,2 +1,2 @@
-require 'custom.set'
-require 'custom.remap'
+require 'custom.configs.nvim.set'
+require 'custom.configs.nvim.remap'

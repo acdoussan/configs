@@ -1,7 +1,7 @@
 local m = {}
 
 m.ui = { theme = 'tokyonight' }
-m.plugins = 'custom.plugins'
-m.mappings = require 'custom.mappings'
+m.plugins = 'custom.configs.nvchad.plugins'
+m.mappings = require 'custom.configs.nvchad.mappings'
 
 return m

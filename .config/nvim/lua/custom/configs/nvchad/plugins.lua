@@ -21,14 +21,14 @@ local plugins = {
          {'rafamadriz/friendly-snippets'},
       },
       config = function()
-         require 'custom.configs.lsp'
+         require 'custom.configs.plugins.lsp'
       end,
       lazy = false,
    },
    {
       'nvim-treesitter/nvim-treesitter',
       config = function()
-         require 'custom.configs.treesitter'
+         require 'custom.configs.plugins.treesitter'
       end,
    },
    {
@@ -49,14 +49,14 @@ local plugins = {
           telescope.load_extension(ext)
         end
 
-         require 'custom.configs.telescope'
+         require 'custom.configs.plugins.telescope'
       end,
       lazy = false,
    },
    {
       'mbbill/undotree',
       config = function()
-         require 'custom.configs.undotree'
+         require 'custom.configs.plugins.undotree'
       end,
       lazy = false,
    },
