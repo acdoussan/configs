@@ -1,6 +1,6 @@
 local m = {}
 
-m.ui = {theme = 'catppuccin'}
+m.ui = { theme = 'tokyonight' }
 m.plugins = 'custom.plugins'
 m.mappings = require 'custom.mappings'
 
