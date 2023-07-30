@@ -12,7 +12,7 @@ m.general = {
     ['<C-l>'] = { '<Right>' },
     ['<C-j>'] = { '<C-o>gj' },
     ['<C-k>'] = { '<C-o>gk' },
-  }
+  },
 }
 
 return m
