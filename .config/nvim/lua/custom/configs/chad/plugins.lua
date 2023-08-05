@@ -66,24 +66,6 @@ local plugins = {
     lazy = false,
   },
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
-    dependencies = { {'nvim-lua/plenary.nvim'}, {'nvim-treesitter/nvim-treesitter'} },
-    config = function(_, opts)
-      dofile(vim.g.base46_cache .. "telescope")
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
-
-      require 'custom.configs.plugins.telescope'
-    end,
-    lazy = false,
-  },
-  {
     'mbbill/undotree',
     config = function()
       require 'custom.configs.plugins.undotree'

@@ -7,12 +7,6 @@ m.general = {
     ['<C-j>'] = { '<cmd> TmuxNavigateDown<CR>', 'window down'},
     ['<C-k>'] = { '<cmd> TmuxNavigateUp<CR>', 'window up'},
   },
-  i = {
-    ['<C-h>'] = { '<Left>' },
-    ['<C-l>'] = { '<Right>' },
-    ['<C-j>'] = { '<C-o>gj' },
-    ['<C-k>'] = { '<C-o>gk' },
-  },
 }
 
 return m
