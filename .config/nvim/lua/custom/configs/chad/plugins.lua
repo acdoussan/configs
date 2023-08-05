@@ -67,9 +67,6 @@ local plugins = {
   },
   {
     'mbbill/undotree',
-    config = function()
-      require 'custom.configs.plugins.undotree'
-    end,
     lazy = false,
   },
   {
