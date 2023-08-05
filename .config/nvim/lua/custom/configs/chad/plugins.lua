@@ -72,7 +72,15 @@ local plugins = {
   {
     'christoomey/vim-tmux-navigator',
     lazy = false,
-  }
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      local defaultOpts = require "plugins.configs.nvimtree"
+      defaultOpts.view.width = 60
+      return defaultOpts
+    end,
+  },
 }
 
 return plugins
