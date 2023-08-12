@@ -1,29 +1,27 @@
 local plugins = {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    dependencies = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-path'},
-      {'saadparwaiz1/cmp_luasnip'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-nvim-lua'},
-
-      -- Snippets
-      {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'},
-    },
+    'neovim/nvim-lspconfig',
     config = function()
       require 'custom.configs.plugins.lsp'
+      require 'plugins.configs.lspconfig'
     end,
-    lazy = false,
+    dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      mapping = {
+        ["<Tab>"] = require('cmp').config.disable,
+        ['<S-Tab>'] = require('cmp').config.disable,
+        ['<Down>'] = require('cmp').config.disable,
+        ['<Up>'] = require('cmp').config.disable,
+        ['<CR>'] = require('cmp').config.disable,
+        ['<C-p>'] = require('cmp').mapping.select_prev_item(),
+        ['<C-n>'] = require('cmp').mapping.select_next_item(),
+        ['<C-y>'] = require('cmp').mapping.confirm({ select = true }),
+        ["<C-Space>"] = require('cmp').mapping.complete(),
+      }
+    }
   },
   {
     'nvim-treesitter/nvim-treesitter',
