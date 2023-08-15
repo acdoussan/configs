@@ -15,4 +15,11 @@ m.undotree = {
   },
 }
 
+m.tabufline = {
+  n = {
+    ['<leader>th'] = { function() require("nvchad_ui.tabufline").move_buf(-1) end, 'move tab to the left'},
+    ['<leader>tl'] = { function() require("nvchad_ui.tabufline").move_buf(1) end, 'move tab to the right'},
+  },
+}
+
 return m
