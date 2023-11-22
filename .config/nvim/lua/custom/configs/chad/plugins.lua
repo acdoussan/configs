@@ -19,7 +19,8 @@ local plugins = {
         ['<C-p>'] = require('cmp').mapping.select_prev_item(),
         ['<C-n>'] = require('cmp').mapping.select_next_item(),
         ['<C-y>'] = require('cmp').mapping.confirm({ select = true }),
-        ["<C-Space>"] = require('cmp').mapping.complete(),
+        ['<C-a>'] = require('cmp').mapping.complete(),
+        ['<C-d>'] = require('cmp').mapping.abort(),
       }
     }
   },
