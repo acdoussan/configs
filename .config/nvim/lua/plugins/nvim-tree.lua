@@ -3,7 +3,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     opts = function()
       local opts = {
-        filters = { dotfiles = true },
+        filters = { dotfiles = false },
         disable_netrw = true,
         hijack_cursor = true,
         sync_root_with_cwd = true,
