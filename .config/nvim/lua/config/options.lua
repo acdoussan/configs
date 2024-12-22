@@ -34,3 +34,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 
 vim.opt.whichwrap:append("<,>,h,l,[,]")
+
+-- prevent LSP from changing the root dir
+vim.g.root_spec = { "cwd" }
